@@ -24,6 +24,35 @@ def key_cream_background(image):
     return image.crop(bbox) if bbox else image
 
 
+def tint_for_bottrace(image):
+    image = image.convert("RGBA")
+    pixels = image.load()
+    width, height = image.size
+
+    for y in range(height):
+        for x in range(width):
+            r, g, b, a = pixels[x, y]
+            if a < 8:
+                continue
+
+            gray = int((r * 0.32) + (g * 0.5) + (b * 0.18))
+            hot = max(0, r - g)
+
+            nr = int(gray * 0.42 + 255 * 0.22 + hot * 0.28)
+            ng = int(gray * 0.34 + 18)
+            nb = int(gray * 0.54 + 154 * 0.2 + hot * 0.18)
+
+            # Preserve face/highlight readability while still pulling it into the palette.
+            if gray > 170:
+                nr = int(245 + hot * 0.02)
+                ng = int(232 + hot * 0.01)
+                nb = int(242 + hot * 0.03)
+
+            pixels[x, y] = (min(nr, 255), min(ng, 255), min(nb, 255), a)
+
+    return image
+
+
 def make_mini_bots():
     sheet = Image.open(ASSETS / "mini-bots.webp")
     crops = [
@@ -36,7 +65,7 @@ def make_mini_bots():
     ]
 
     for index, crop in enumerate(crops, start=1):
-        bot = key_cream_background(sheet.crop(crop))
+        bot = tint_for_bottrace(key_cream_background(sheet.crop(crop)))
         bot.save(ASSETS / f"mini-bot-{index}.png")
 
 
