@@ -1,0 +1,106 @@
+{
+  "receipt": {
+    "version": "bottrace.receipt.v1",
+    "receiptId": "bottrace-demo-0001",
+    "timestamp": "2026-07-05T09:30:00.000Z",
+    "agent": {
+      "id": "agent-bot-ops-01",
+      "name": "BOT Ops Autopilot",
+      "wallet": "0xB07700000000000000000000000000000000A117",
+      "model": "gpt-5-botchain-policy-runner"
+    },
+    "task": {
+      "intent": "Check BOT Chain DEX liquidity, approve the action only under the configured spend cap, and anchor the execution receipt for audit.",
+      "intentHash": "123326e0520197592b1633acf2088454a422635cfa219df9fa45e63f3fb9fea6",
+      "user": "0xB077000000000000000000000000000000005AFE"
+    },
+    "policy": {
+      "policyHash": "1a97af4c62460eca0b0d40877c0af5d0d7b33226d120dce899399faa0938cd29",
+      "decision": "approved",
+      "rules": [
+        "allowed_tool",
+        "under_single_call_limit",
+        "under_daily_budget"
+      ],
+      "riskScore": 18,
+      "explanation": "The agent used approved BOT Chain tools and stayed below the configured single-call threshold."
+    },
+    "toolCall": {
+      "tool": "bot-dex-risk-check",
+      "target": "https://dex.botchain.ai/",
+      "method": "POST",
+      "requestHash": "c4fc5436656288be33a3d76693ff91b874c9a3968e7b4773e7189ede3cda63d4",
+      "responseHash": "98c532e9aec28135fb00ce64ce149096d175487ac60e1cd0f0aa7abb0ae0b180",
+      "costWei": 12000000000000000,
+      "status": "ok"
+    },
+    "chain": {
+      "network": "BOT Chain Testnet",
+      "chainId": 968,
+      "contractAddress": "0xb6F0efaB84835d52ca4F096EC5A673872d641003",
+      "blockHash": "pending"
+    },
+    "evidence": [
+      {
+        "label": "policy snapshot",
+        "uri": "ipfs://demo/policy-snapshot.json",
+        "hash": "a53da7ecd629b22584f1a3b2447cd8dd7b800a323431401ad1486f36b2e1c6ec"
+      },
+      {
+        "label": "tool response",
+        "uri": "ipfs://demo/risk-response.json",
+        "hash": "a67c0abce1673818fd0ce042d183c7a2646c33ebc6b463fa73361d2e47e61305"
+      }
+    ],
+    "receiptHash": "7411080f39d199162256f356cc19a61892adfca8f774ccfdceca03df4884621a"
+  },
+  "proof": {
+    "transactionHash": "0xc9c15fcc932c26ed6199121b846eadd92b87b3604d25e351f85151b21bacdece",
+    "blockNumber": 15190810,
+    "blockHash": "0xfe56f73abfb9f2e6b46de2255db79cd9d4e8aeba834fbf4a08221574e10bb668",
+    "explorerUrl": "https://scan.bohr.life/tx/0xc9c15fcc932c26ed6199121b846eadd92b87b3604d25e351f85151b21bacdece"
+  },
+  "transactionResult": {
+    "mode": "submitted-botchain-testnet",
+    "transactionHash": "0xc9c15fcc932c26ed6199121b846eadd92b87b3604d25e351f85151b21bacdece",
+    "payload": {
+      "network": "BOT Chain Testnet",
+      "chainId": 968,
+      "rpcUrl": "https://rpc.bohr.life",
+      "explorerUrl": "https://scan.bohr.life",
+      "contractAddress": "0xb6F0efaB84835d52ca4F096EC5A673872d641003",
+      "contract": "BotTraceRegistry",
+      "functionName": "submitReceipt",
+      "abi": [
+        "function submitReceipt(string receiptId, bytes32 receiptHash, string agentId, bytes32 policyHash, uint256 costWei, string tool, string decision, string timestamp)"
+      ],
+      "args": [
+        "bottrace-demo-0001",
+        "0x7411080f39d199162256f356cc19a61892adfca8f774ccfdceca03df4884621a",
+        "agent-bot-ops-01",
+        "0x1a97af4c62460eca0b0d40877c0af5d0d7b33226d120dce899399faa0938cd29",
+        "12000000000000000",
+        "bot-dex-risk-check",
+        "approved",
+        "2026-07-05T09:30:00.000Z"
+      ],
+      "namedArgs": {
+        "receiptId": "bottrace-demo-0001",
+        "receiptHash": "0x7411080f39d199162256f356cc19a61892adfca8f774ccfdceca03df4884621a",
+        "agentId": "agent-bot-ops-01",
+        "policyHash": "0x1a97af4c62460eca0b0d40877c0af5d0d7b33226d120dce899399faa0938cd29",
+        "costWei": "12000000000000000",
+        "tool": "bot-dex-risk-check",
+        "decision": "approved",
+        "timestamp": "2026-07-05T09:30:00.000Z"
+      }
+    },
+    "explorerUrl": "https://scan.bohr.life/tx/0xc9c15fcc932c26ed6199121b846eadd92b87b3604d25e351f85151b21bacdece",
+    "message": "Receipt submitted to BotTraceRegistry on BOT Chain testnet."
+  },
+  "verification": {
+    "ok": true,
+    "expected": "7411080f39d199162256f356cc19a61892adfca8f774ccfdceca03df4884621a",
+    "actual": "7411080f39d199162256f356cc19a61892adfca8f774ccfdceca03df4884621a"
+  }
+}

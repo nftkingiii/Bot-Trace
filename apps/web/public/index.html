@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BotTrace</title>
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero-frame" aria-labelledby="pageTitle">
+        <nav class="nav" aria-label="Primary">
+          <a class="brand" href="/" aria-label="BotTrace home">
+            <img class="brand-mark" src="/logo-mark-512.png" alt="" aria-hidden="true">
+            <span>BotTrace</span>
+          </a>
+          <div class="nav-links">
+            <a href="#intro">Overview</a>
+            <a href="#how">Flow</a>
+            <a href="#does">Guardrails</a>
+            <a href="#receipt">Receipt</a>
+          </div>
+          <div class="nav-actions">
+            <a id="contractLink" href="#" target="_blank" rel="noreferrer">Contract</a>
+            <a class="login-link" id="receiptTxLink" href="#" target="_blank" rel="noreferrer">View proof</a>
+          </div>
+        </nav>
+
+        <div class="hero-grid">
+          <div class="hero-copy-panel">
+            <p class="hero-kicker">BOT Chain AI Agent Track</p>
+            <h1 id="pageTitle">
+              <span>BotTrace</span>
+              <span>makes agents accountable.</span>
+            </h1>
+            <p class="hero-copy">
+              A live flight recorder for autonomous agents: capture intent,
+              enforce policy, anchor the receipt hash, and replay the proof.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-action" href="#receipt">Open live receipt</a>
+              <a class="secondary-action" href="#how">See the flow</a>
+            </div>
+
+            <div class="proof-stack" aria-label="Live proof summary">
+              <article>
+                <span>Receipt</span>
+                <strong>Verified</strong>
+              </article>
+              <article>
+                <span>Network</span>
+                <strong>BOT Chain</strong>
+              </article>
+              <article>
+                <span>Digest</span>
+                <strong>7411080f...</strong>
+              </article>
+            </div>
+          </div>
+
+          <div class="bot-stage" aria-hidden="true">
+            <div class="scan-rings"></div>
+            <img class="main-bot" src="/assets/main-bot-blended.png" alt="">
+            <img class="mini-bot bot-a" src="/assets/mini-bot-1.png" alt="">
+            <img class="mini-bot bot-b" src="/assets/mini-bot-2.png" alt="">
+            <img class="mini-bot bot-c" src="/assets/mini-bot-3.png" alt="">
+            <img class="mini-bot bot-d" src="/assets/mini-bot-4.png" alt="">
+            <img class="mini-bot bot-e" src="/assets/mini-bot-5.png" alt="">
+            <img class="mini-bot bot-f" src="/assets/mini-bot-6.png" alt="">
+          </div>
+        </div>
+
+        <div class="trust-row" aria-label="Product guarantees">
+          <span>Stack-agnostic</span>
+          <span>Policy-enforced</span>
+          <span>Audit-ready</span>
+          <span>BOT Chain-anchored</span>
+        </div>
+      </section>
+
+      <section class="intro-band" id="intro">
+        <div class="intro-copy">
+          <p class="section-kicker">The state of agent accountability</p>
+          <h2>Agents are becoming operators. The missing layer is proof.</h2>
+          <p>
+            When an agent uses a paid API, touches a wallet, or triggers a
+            contract, a chat transcript is not enough. BotTrace creates a receipt
+            for the action, keeps private evidence off-chain, and anchors the
+            digest on BOT Chain.
+          </p>
+        </div>
+        <div class="intro-visual" aria-label="BotTrace receipt overview">
+          <div class="visual-header">
+            <span>Runtime receipt</span>
+            <strong>Verified</strong>
+          </div>
+          <div class="visual-lanes">
+            <span>Intent</span>
+            <span>Policy</span>
+            <span>Tool call</span>
+            <span>BOT proof</span>
+          </div>
+          <div class="visual-proof">
+            <code>7411080f39d1...84621a</code>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-heading" id="how">
+        <p class="section-kicker">How it works</p>
+        <h2>Wrap the agent action, then write the proof.</h2>
+      </section>
+
+      <section class="domain-grid" aria-label="How BotTrace works">
+        <article>
+          <span class="card-number">01</span>
+          <h3>Capture intent</h3>
+          <p>
+            The agent records the user goal, selected model, wallet identity,
+            and the exact action it is about to perform.
+          </p>
+        </article>
+        <article>
+          <span class="card-number">02</span>
+          <h3>Enforce policy</h3>
+          <p>
+            Runtime rules approve or block the action based on tool access,
+            spend limits, risk score, and required human review.
+          </p>
+        </article>
+        <article>
+          <span class="card-number">03</span>
+          <h3>Anchor receipt</h3>
+          <p>
+            The receipt hash and key metadata are submitted to BOT Chain so teams
+            can verify later that the record was not changed.
+          </p>
+        </article>
+      </section>
+
+      <section class="guardrail-section" id="does">
+        <div>
+          <p class="section-kicker">What it does</p>
+          <h2>Autonomy needs a blackbox.</h2>
+          <p>
+            BotTrace gives developers the receipt trail they need before
+            letting autonomous software spend, sign, deploy, or call external tools.
+          </p>
+        </div>
+        <div class="guardrail-grid">
+          <article>
+            <h3>Policy trail</h3>
+            <p>Shows which rule approved the action and the risk score at runtime.</p>
+          </article>
+          <article>
+            <h3>Cost record</h3>
+            <p>Stores the spend amount so paid API and wallet activity stays auditable.</p>
+          </article>
+          <article>
+            <h3>Evidence hashes</h3>
+            <p>Links private evidence without publishing prompts, documents, or raw outputs.</p>
+          </article>
+          <article>
+            <h3>BOT Chain proof</h3>
+            <p>Anchors the receipt digest through a compact smart contract registry.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="proof-stage" id="receipt" aria-label="Live receipt verification">
+        <div class="proof-copy">
+          <p class="section-kicker">Agent receipt control plane</p>
+          <h2>Live verification console</h2>
+          <p>
+            This demo receipt was generated locally and submitted through the
+            BotTraceRegistry contract on BOT Chain testnet.
+          </p>
+        </div>
+
+        <div class="console" aria-live="polite">
+          <div class="console-topbar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="console-grid">
+            <article class="console-card integrity-card">
+              <span class="console-label">Receipt integrity</span>
+              <strong id="integrityState">Loading</strong>
+              <code id="receiptHash">Waiting for receipt</code>
+            </article>
+            <article class="console-card">
+              <span class="console-label">Policy</span>
+              <strong id="policyDecision">-</strong>
+              <small>Runtime decision</small>
+            </article>
+            <article class="console-card">
+              <span class="console-label">Risk</span>
+              <strong id="riskScore">-</strong>
+              <small>Policy score</small>
+            </article>
+            <article class="console-card">
+              <span class="console-label">Tool cost</span>
+              <strong id="toolCost">-</strong>
+              <small>Recorded spend</small>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Receipt summary">
+        <article>
+          <span>Agent</span>
+          <strong id="agentName">-</strong>
+        </article>
+        <article>
+          <span>Tool</span>
+          <strong id="toolName">-</strong>
+        </article>
+        <article>
+          <span>Transaction mode</span>
+          <strong id="transactionMode">-</strong>
+        </article>
+        <article>
+          <span>Network</span>
+          <strong>BOT Chain Testnet</strong>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <div class="timeline-panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-kicker">Action pipeline</p>
+              <h2>Agent replay</h2>
+            </div>
+            <span class="panel-status">4 events</span>
+          </div>
+          <ol class="timeline" id="timeline"></ol>
+        </div>
+
+        <aside class="detail-panel">
+          <div class="panel-header compact">
+            <div>
+              <p class="section-kicker">Receipt detail</p>
+              <h2>Evidence map</h2>
+            </div>
+          </div>
+          <dl>
+            <div>
+              <dt>Receipt ID</dt>
+              <dd id="receiptId">-</dd>
+            </div>
+            <div>
+              <dt>Agent wallet</dt>
+              <dd id="agentWallet">-</dd>
+            </div>
+            <div>
+              <dt>Intent hash</dt>
+              <dd id="intentHash">-</dd>
+            </div>
+            <div>
+              <dt>Policy hash</dt>
+              <dd id="policyHash">-</dd>
+            </div>
+            <div>
+              <dt>Contract address</dt>
+              <dd id="contractHash">-</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="payload-panel">
+        <div class="panel-header">
+          <div>
+            <p class="section-kicker">BOT Chain payload</p>
+            <h2>Prepared registry call</h2>
+          </div>
+          <button id="copyPayload" type="button">Copy JSON</button>
+        </div>
+        <pre id="payloadJson">Loading...</pre>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

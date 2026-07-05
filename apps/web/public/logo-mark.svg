@@ -1,0 +1,21 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">BotTrace mark</title>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="48%" r="65%">
+      <stop offset="0" stop-color="#FF78C5"/>
+      <stop offset="0.5" stop-color="#FF2F9A"/>
+      <stop offset="1" stop-color="#050506"/>
+    </radialGradient>
+  </defs>
+  <rect width="192" height="192" rx="42" fill="#07070A"/>
+  <path d="M96 28C133.555 28 164 58.445 164 96C164 133.555 133.555 164 96 164C58.445 164 28 133.555 28 96C28 58.445 58.445 28 96 28Z" fill="url(#glow)" opacity="0.26"/>
+  <path d="M96 36L145 64V121L96 149L47 121V64L96 36Z" fill="#111116" stroke="#FF2F9A" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M96 64L121 79V110L96 125L71 110V79L96 64Z" fill="#F7F4F7"/>
+  <circle cx="96" cy="96" r="13" fill="#FF2F9A"/>
+  <path d="M61 56C44 49 32 37 25 22" stroke="#FF78C5" stroke-width="7" stroke-linecap="round"/>
+  <path d="M131 56C148 49 160 37 167 22" stroke="#FF78C5" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="23" cy="20" r="8" fill="#FF2F9A"/>
+  <circle cx="169" cy="20" r="8" fill="#FF2F9A"/>
+  <path d="M39 142H17" stroke="#FF78C5" stroke-width="8" stroke-linecap="round"/>
+  <path d="M153 142H175" stroke="#FF78C5" stroke-width="8" stroke-linecap="round"/>
+</svg>

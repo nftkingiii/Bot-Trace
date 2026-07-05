@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">BotTrace logo mark</title>
+  <desc id="desc">A dark bot-head proof mark with magenta neon trace lines.</desc>
+  <rect width="512" height="512" fill="#080A12"/>
+  <path d="M174 163L144 118" stroke="#D62B86" stroke-width="18" stroke-linecap="round"/>
+  <path d="M338 163L368 118" stroke="#D62B86" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="128" cy="92" r="25" fill="#11131B" stroke="#D62B86" stroke-width="14"/>
+  <circle cx="384" cy="92" r="25" fill="#11131B" stroke="#D62B86" stroke-width="14"/>
+  <path d="M256 128L384 190V316L256 392L128 316V190L256 128Z" fill="#11131B" stroke="#D62B86" stroke-width="16" stroke-linejoin="round"/>
+  <path d="M256 164L348 209V299L256 354L164 299V209L256 164Z" fill="#161A24" stroke="#303541" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M256 208L314 242V310L256 344L198 310V242L256 208Z" fill="#F8F4F7"/>
+  <circle cx="256" cy="276" r="31" fill="#FF1493"/>
+</svg>

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+target/
+.env
+.env.local
+*.wasm
+*.log
+**/target/
+docs/DEMO_SCRIPT.md
