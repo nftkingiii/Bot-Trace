@@ -1,8 +1,15 @@
 import { writeFile } from "node:fs/promises";
 import { createReceipt, sha256Hex, verifyReceipt } from "../../packages/core/receipt.mjs";
-import { createBotChainBlackboxClient } from "../../packages/botchain/blackboxClient.mjs";
+import { BOT_CHAIN_MAINNET, createBotChainBlackboxClient } from "../../packages/botchain/blackboxClient.mjs";
 
 const BOTTRACE_CONTRACT_ADDRESS = process.env.BOTTRACE_CONTRACT_ADDRESS ?? null;
+const network = {
+  ...BOT_CHAIN_MAINNET,
+  rpcUrl: process.env.BOTCHAIN_RPC_URL ?? BOT_CHAIN_MAINNET.rpcUrl,
+  chainId: Number(process.env.BOTCHAIN_CHAIN_ID ?? BOT_CHAIN_MAINNET.chainId),
+  name: process.env.BOTCHAIN_NETWORK_NAME ?? BOT_CHAIN_MAINNET.name,
+  explorerUrl: process.env.BOTCHAIN_EXPLORER_URL ?? BOT_CHAIN_MAINNET.explorerUrl
+};
 
 const demoReceipt = createReceipt({
   receiptId: "bottrace-demo-0001",
@@ -42,8 +49,8 @@ const demoReceipt = createReceipt({
     status: "ok"
   },
   chain: {
-    network: "BOT Chain Testnet",
-    chainId: 968,
+    network: network.name,
+    chainId: network.chainId,
     contractAddress: BOTTRACE_CONTRACT_ADDRESS ?? "pending-bottrace-deploy",
     blockHash: "pending"
   },
@@ -60,7 +67,8 @@ const demoReceipt = createReceipt({
 });
 
 const client = createBotChainBlackboxClient({
-  contractAddress: BOTTRACE_CONTRACT_ADDRESS
+  contractAddress: BOTTRACE_CONTRACT_ADDRESS,
+  network
 });
 
 const transactionResult = await client.submitReceipt(demoReceipt);

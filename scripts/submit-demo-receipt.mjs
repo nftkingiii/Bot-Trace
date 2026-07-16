@@ -4,7 +4,9 @@ import { ethers } from "ethers";
 import { createBotChainBlackboxClient, transactionUrl } from "../packages/botchain/blackboxClient.mjs";
 
 const RPC_URL = process.env.BOTCHAIN_RPC_URL ?? "https://rpc.bohr.life";
-const EXPECTED_CHAIN_ID = 968n;
+const EXPECTED_CHAIN_ID = BigInt(process.env.BOTCHAIN_CHAIN_ID ?? "968");
+const NETWORK_NAME = process.env.BOTCHAIN_NETWORK_NAME ?? "BOT Chain Testnet";
+const EXPLORER_URL = process.env.BOTCHAIN_EXPLORER_URL ?? "https://scan.bohr.life";
 const contractAddress = process.argv[2] ?? process.env.BOTTRACE_CONTRACT_ADDRESS;
 
 if (!contractAddress) {
@@ -22,7 +24,16 @@ if (network.chainId !== EXPECTED_CHAIN_ID) {
 const wallet = new ethers.Wallet(privateKey, provider);
 const dataPath = "apps/web/public/demo-receipt.json";
 const data = JSON.parse(await readFile(dataPath, "utf8"));
-const client = createBotChainBlackboxClient({ contractAddress });
+const client = createBotChainBlackboxClient({
+  contractAddress,
+  network: {
+    name: NETWORK_NAME,
+    chainId: Number(EXPECTED_CHAIN_ID),
+    rpcUrl: RPC_URL,
+    explorerUrl: EXPLORER_URL,
+    nativeCurrency: "BOT"
+  }
+});
 const payload = client.prepareSubmitReceipt(data.receipt);
 const contract = new ethers.Contract(contractAddress, payload.abi, wallet);
 const tx = await contract.submitReceipt(...payload.args);
@@ -36,6 +47,8 @@ console.log(JSON.stringify({
 
 const receipt = await tx.wait(1);
 data.receipt.chain.contractAddress = contractAddress;
+data.receipt.chain.network = NETWORK_NAME;
+data.receipt.chain.chainId = Number(EXPECTED_CHAIN_ID);
 data.proof = {
   transactionHash: tx.hash,
   blockNumber: receipt.blockNumber,
@@ -43,11 +56,11 @@ data.proof = {
   explorerUrl: transactionUrl(payload.explorerUrl, tx.hash)
 };
 data.transactionResult = {
-  mode: "submitted-botchain-testnet",
+  mode: `submitted-${NETWORK_NAME.toLowerCase().replaceAll(" ", "-")}`,
   transactionHash: tx.hash,
   payload,
   explorerUrl: transactionUrl(payload.explorerUrl, tx.hash),
-  message: "Receipt submitted to BotTraceRegistry on BOT Chain testnet."
+  message: `Receipt submitted to BotTraceRegistry on ${NETWORK_NAME}.`
 };
 
 await writeFile(dataPath, JSON.stringify(data, null, 2));

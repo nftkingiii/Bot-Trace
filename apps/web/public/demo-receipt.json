@@ -35,8 +35,8 @@
       "status": "ok"
     },
     "chain": {
-      "network": "BOT Chain Testnet",
-      "chainId": 968,
+      "network": "BOT Chain Mainnet",
+      "chainId": 677,
       "contractAddress": "0xb6F0efaB84835d52ca4F096EC5A673872d641003",
       "blockHash": "pending"
     },
@@ -55,19 +55,19 @@
     "receiptHash": "7411080f39d199162256f356cc19a61892adfca8f774ccfdceca03df4884621a"
   },
   "proof": {
-    "transactionHash": "0xc9c15fcc932c26ed6199121b846eadd92b87b3604d25e351f85151b21bacdece",
-    "blockNumber": 15190810,
-    "blockHash": "0xfe56f73abfb9f2e6b46de2255db79cd9d4e8aeba834fbf4a08221574e10bb668",
-    "explorerUrl": "https://scan.bohr.life/tx/0xc9c15fcc932c26ed6199121b846eadd92b87b3604d25e351f85151b21bacdece"
+    "transactionHash": "0x985e0da4e2bb202cdb695a3f085f58b104f2031094096d8aba65319210ab306a",
+    "blockNumber": 16289943,
+    "blockHash": "0xf9b68c3245275ff195aafc34116b80564b2b0ea342e3306be57e92197fc67eab",
+    "explorerUrl": "https://scan.botchain.ai/tx/0x985e0da4e2bb202cdb695a3f085f58b104f2031094096d8aba65319210ab306a"
   },
   "transactionResult": {
-    "mode": "submitted-botchain-testnet",
-    "transactionHash": "0xc9c15fcc932c26ed6199121b846eadd92b87b3604d25e351f85151b21bacdece",
+    "mode": "submitted-bot-chain-mainnet",
+    "transactionHash": "0x985e0da4e2bb202cdb695a3f085f58b104f2031094096d8aba65319210ab306a",
     "payload": {
-      "network": "BOT Chain Testnet",
-      "chainId": 968,
-      "rpcUrl": "https://rpc.bohr.life",
-      "explorerUrl": "https://scan.bohr.life",
+      "network": "BOT Chain Mainnet",
+      "chainId": 677,
+      "rpcUrl": "https://rpc.botchain.ai",
+      "explorerUrl": "https://scan.botchain.ai",
       "contractAddress": "0xb6F0efaB84835d52ca4F096EC5A673872d641003",
       "contract": "BotTraceRegistry",
       "functionName": "submitReceipt",
@@ -95,8 +95,8 @@
         "timestamp": "2026-07-05T09:30:00.000Z"
       }
     },
-    "explorerUrl": "https://scan.bohr.life/tx/0xc9c15fcc932c26ed6199121b846eadd92b87b3604d25e351f85151b21bacdece",
-    "message": "Receipt submitted to BotTraceRegistry on BOT Chain testnet."
+    "explorerUrl": "https://scan.botchain.ai/tx/0x985e0da4e2bb202cdb695a3f085f58b104f2031094096d8aba65319210ab306a",
+    "message": "Receipt submitted to BotTraceRegistry on BOT Chain Mainnet."
   },
   "verification": {
     "ok": true,

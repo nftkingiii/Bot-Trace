@@ -14,7 +14,7 @@ AI agents are beginning to spend funds, call paid APIs, sign transactions, and o
 
 ## Solution
 
-BotTrace creates cryptographic receipts for agent actions and anchors their hashes on BOT Chain testnet. The receipt trail helps users audit agent behavior, teams debug failures, and future protocols resolve disputes.
+BotTrace creates cryptographic receipts for agent actions and anchors their hashes on BOT Chain mainnet. The receipt trail helps users audit agent behavior, teams debug failures, and future protocols resolve disputes.
 
 ## Current status
 
@@ -23,8 +23,8 @@ BotTrace creates cryptographic receipts for agent actions and anchors their hash
 - Prepared `BotTraceRegistry.submitReceipt(...)` payload.
 - Solidity registry contract in `contracts/BotTraceRegistry.sol`.
 - BOT Chain adapter in `packages/botchain/blackboxClient.mjs`.
-- Deployed BOT Chain testnet registry: `0xb6F0efaB84835d52ca4F096EC5A673872d641003`.
-- Submitted demo receipt transaction: `0xc9c15fcc932c26ed6199121b846eadd92b87b3604d25e351f85151b21bacdece`.
+- Deployed BOT Chain mainnet registry: `0xb6F0efaB84835d52ca4F096EC5A673872d641003`.
+- Submitted demo receipt transaction: `0x985e0da4e2bb202cdb695a3f085f58b104f2031094096d8aba65319210ab306a`.
 
 ## Product strengths
 

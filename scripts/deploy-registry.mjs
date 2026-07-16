@@ -4,7 +4,9 @@ import solc from "solc";
 import { ethers } from "ethers";
 
 const RPC_URL = process.env.BOTCHAIN_RPC_URL ?? "https://rpc.bohr.life";
-const EXPECTED_CHAIN_ID = 968n;
+const EXPECTED_CHAIN_ID = BigInt(process.env.BOTCHAIN_CHAIN_ID ?? "968");
+const NETWORK_NAME = process.env.BOTCHAIN_NETWORK_NAME ?? "BOT Chain Testnet";
+const EXPLORER_URL = process.env.BOTCHAIN_EXPLORER_URL ?? "https://scan.bohr.life";
 
 const privateKey = await readPrivateKey();
 const provider = new ethers.JsonRpcProvider(RPC_URL);
@@ -18,7 +20,7 @@ const wallet = new ethers.Wallet(privateKey, provider);
 const balance = await provider.getBalance(wallet.address);
 
 if (balance === 0n) {
-  throw new Error(`Wallet ${wallet.address} has no BOT Chain testnet gas.`);
+  throw new Error(`Wallet ${wallet.address} has no ${NETWORK_NAME} gas.`);
 }
 
 const { abi, bytecode } = await compileContract();
@@ -29,6 +31,7 @@ const deployTx = contract.deploymentTransaction();
 console.log(JSON.stringify({
   mode: "deploy-sent",
   wallet: wallet.address,
+  network: NETWORK_NAME,
   chainId: Number(network.chainId),
   transactionHash: deployTx.hash
 }, null, 2));
@@ -42,7 +45,7 @@ console.log(JSON.stringify({
   contractAddress: address,
   transactionHash: deployTx.hash,
   blockNumber: receipt.blockNumber,
-  explorerUrl: `https://scan.bohr.life/address/${address}`
+  explorerUrl: `${EXPLORER_URL.replace(/\/$/, "")}/address/${address}`
 }, null, 2));
 
 async function compileContract() {

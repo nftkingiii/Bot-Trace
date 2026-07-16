@@ -9,6 +9,14 @@ export const BOT_CHAIN_TESTNET = {
   nativeCurrency: "BOT"
 };
 
+export const BOT_CHAIN_MAINNET = {
+  name: "BOT Chain Mainnet",
+  chainId: 677,
+  rpcUrl: "https://rpc.botchain.ai",
+  explorerUrl: "https://scan.botchain.ai",
+  nativeCurrency: "BOT"
+};
+
 export function createBotChainBlackboxClient(config = {}) {
   const network = {
     ...BOT_CHAIN_TESTNET,

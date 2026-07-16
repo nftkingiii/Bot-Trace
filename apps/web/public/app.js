@@ -1,8 +1,8 @@
-const TESTNET_PROOF = {
-  chainId: 968,
+const MAINNET_PROOF = {
+  chainId: 677,
   contractAddress: "pending-bottrace-deploy",
   receiptTransaction: "pending-bottrace-submit",
-  explorerUrl: "https://scan.bohr.life"
+  explorerUrl: "https://scan.botchain.ai"
 };
 
 async function loadDemo() {
@@ -35,19 +35,21 @@ function shortHash(value, start = 10, end = 8) {
   return `${input.slice(0, start)}...${input.slice(-end)}`;
 }
 
-function explorerTransaction(hash) {
-  if (!hash || String(hash).startsWith("pending")) return "https://scan.bohr.life/";
-  return `https://scan.bohr.life/tx/${hash}`;
+function explorerTransaction(explorerUrl, hash) {
+  const baseUrl = explorerUrl.replace(/\/$/, "");
+  if (!hash || String(hash).startsWith("pending")) return `${baseUrl}/`;
+  return `${baseUrl}/tx/${hash}`;
 }
 
-function explorerContract(address) {
-  if (!address || String(address).startsWith("pending")) return "https://scan.bohr.life/";
-  return `https://scan.bohr.life/address/${address}`;
+function explorerContract(explorerUrl, address) {
+  const baseUrl = explorerUrl.replace(/\/$/, "");
+  if (!address || String(address).startsWith("pending")) return `${baseUrl}/`;
+  return `${baseUrl}/address/${address}`;
 }
 
 function renderTimeline(receipt, transactionResult, proof) {
   const payload = transactionResult.payload ?? {};
-  const transactionHash = proof?.transactionHash ?? transactionResult.transactionHash ?? TESTNET_PROOF.receiptTransaction;
+  const transactionHash = proof?.transactionHash ?? transactionResult.transactionHash ?? MAINNET_PROOF.receiptTransaction;
   const items = [
     {
       label: "Intent captured",
@@ -66,7 +68,7 @@ function renderTimeline(receipt, transactionResult, proof) {
     },
     {
       label: "Receipt anchored",
-      body: `${payload.functionName ?? "submitReceipt"} on ${payload.network ?? "BOT Chain Testnet"}; transaction ${shortHash(transactionHash, 12, 10)}.`,
+      body: `${payload.functionName ?? "submitReceipt"} on ${payload.network ?? "BOT Chain Mainnet"}; transaction ${shortHash(transactionHash, 12, 10)}.`,
       time: "BOT Chain"
     }
   ];
@@ -101,8 +103,9 @@ function render(data) {
   const { receipt, verification } = data;
   const transactionResult = data.transactionResult ?? data.deployResult ?? {};
   const payload = transactionResult.payload ?? {};
-  const contractAddress = payload.contractAddress ?? receipt.chain.contractAddress ?? TESTNET_PROOF.contractAddress;
-  const transactionHash = data.proof?.transactionHash ?? transactionResult.transactionHash ?? TESTNET_PROOF.receiptTransaction;
+  const contractAddress = payload.contractAddress ?? receipt.chain.contractAddress ?? MAINNET_PROOF.contractAddress;
+  const transactionHash = data.proof?.transactionHash ?? transactionResult.transactionHash ?? MAINNET_PROOF.receiptTransaction;
+  const explorerUrl = payload.explorerUrl ?? MAINNET_PROOF.explorerUrl;
   const integrity = document.getElementById("integrityState");
 
   text("integrityState", verification.ok ? "Verified" : "Mismatch");
@@ -120,13 +123,13 @@ function render(data) {
   text("policyHash", receipt.policy.policyHash);
   text("contractHash", contractAddress);
 
-  setHref("contractLink", explorerContract(contractAddress));
-  setHref("receiptTxLink", explorerTransaction(transactionHash));
+  setHref("contractLink", explorerContract(explorerUrl, contractAddress));
+  setHref("receiptTxLink", explorerTransaction(explorerUrl, transactionHash));
 
   renderTimeline(receipt, transactionResult, data.proof);
   text("payloadJson", JSON.stringify({
     ...payload,
-    proof: data.proof ?? TESTNET_PROOF
+    proof: data.proof ?? MAINNET_PROOF
   }, null, 2));
 
   initScrollReveal();

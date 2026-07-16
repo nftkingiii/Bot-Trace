@@ -19,6 +19,16 @@ Explorer: https://scan.bohr.life
 Currency: BOT
 ```
 
+## BOT Chain mainnet
+
+```text
+Network: BOT Chain Mainnet
+Chain ID: 677
+RPC: https://rpc.botchain.ai
+Explorer: https://scan.botchain.ai
+Currency: BOT
+```
+
 ## Contract
 
 The registry contract is `contracts/BotTraceRegistry.sol`.
@@ -38,24 +48,24 @@ submitReceipt(
 )
 ```
 
-## Current deployment status
+## Current mainnet deployment
 
-BotTrace is deployed on BOT Chain testnet.
+BotTrace is deployed on BOT Chain mainnet.
 
 ```text
 Deployer: 0xC6CFa54eDA215a62fD5495A9B6555Bd85b6B7ddB
 Registry contract: 0xb6F0efaB84835d52ca4F096EC5A673872d641003
-Contract deploy transaction: 0xe5c785a6fc613702c88ba3ef6d359ca4fb3d0bd622ae61093b6664f729545c1c
+Contract deploy transaction: 0xae1d8db6c24f3bce68acf38b7304026fc5efee546ed505e95d7144e60d2f8448
 Demo receipt ID: bottrace-demo-0001
 Demo receipt hash: 7411080f39d199162256f356cc19a61892adfca8f774ccfdceca03df4884621a
-Demo receipt transaction: 0xc9c15fcc932c26ed6199121b846eadd92b87b3604d25e351f85151b21bacdece
-Demo receipt block: 15190810
+Demo receipt transaction: 0x985e0da4e2bb202cdb695a3f085f58b104f2031094096d8aba65319210ab306a
+Demo receipt block: 16289943
 ```
 
 Links:
 
-- Contract: `https://scan.bohr.life/address/0xb6F0efaB84835d52ca4F096EC5A673872d641003`
-- Receipt transaction: `https://scan.bohr.life/tx/0xc9c15fcc932c26ed6199121b846eadd92b87b3604d25e351f85151b21bacdece`
+- Contract: `https://scan.botchain.ai/address/0xb6F0efaB84835d52ca4F096EC5A673872d641003`
+- Receipt transaction: `https://scan.botchain.ai/tx/0x985e0da4e2bb202cdb695a3f085f58b104f2031094096d8aba65319210ab306a`
 
 Read-back verification confirmed `receiptCount = 1` and the stored `receiptHash` matches the local demo receipt hash.
 
@@ -82,4 +92,16 @@ This prints the prepared `submitReceipt` payload for the generated demo receipt.
 ```text
 BOTTRACE_CONTRACT_ADDRESS=0x...
 BOTCHAIN_RPC_URL=https://rpc.bohr.life
+BOTCHAIN_CHAIN_ID=968
+BOTCHAIN_NETWORK_NAME=BOT Chain Testnet
+BOTCHAIN_EXPLORER_URL=https://scan.bohr.life
+```
+
+For mainnet, set:
+
+```text
+BOTCHAIN_RPC_URL=https://rpc.botchain.ai
+BOTCHAIN_CHAIN_ID=677
+BOTCHAIN_NETWORK_NAME=BOT Chain Mainnet
+BOTCHAIN_EXPLORER_URL=https://scan.botchain.ai
 ```
