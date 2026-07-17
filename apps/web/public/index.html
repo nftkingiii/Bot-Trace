@@ -24,7 +24,8 @@
           </div>
           <div class="nav-actions">
             <a id="contractLink" href="#" target="_blank" rel="noreferrer">Contract</a>
-            <a class="login-link" id="receiptTxLink" href="#" target="_blank" rel="noreferrer">View proof</a>
+            <a id="receiptTxLink" href="#" target="_blank" rel="noreferrer">Proof</a>
+            <button class="wallet-nav" id="connectWallet" type="button">Connect wallet</button>
           </div>
         </nav>
 
@@ -77,6 +78,38 @@
           <span>Policy-enforced</span>
           <span>Audit-ready</span>
           <span>BOT Chain-anchored</span>
+        </div>
+      </section>
+
+      <section class="wallet-panel" id="wallet" aria-labelledby="walletTitle">
+        <div class="wallet-heading">
+          <div>
+            <p class="section-kicker">Wallet action</p>
+            <h2 id="walletTitle">Anchor a fresh receipt</h2>
+            <p>Connect on BOT Chain mainnet and publish a new cryptographic execution proof from this demo.</p>
+          </div>
+          <span class="wallet-state" id="walletState" data-state="idle">Not connected</span>
+        </div>
+
+        <div class="wallet-facts" aria-live="polite">
+          <div>
+            <span>Account</span>
+            <strong id="walletAddress">No wallet connected</strong>
+          </div>
+          <div>
+            <span>Network</span>
+            <strong id="walletNetwork">BOT Chain Mainnet</strong>
+          </div>
+          <div>
+            <span>Balance</span>
+            <strong id="walletBalance">-</strong>
+          </div>
+        </div>
+
+        <div class="wallet-controls">
+          <button id="anchorReceipt" type="button" disabled>Anchor new receipt</button>
+          <p id="walletMessage" role="status">Connect a browser wallet to prepare a new receipt.</p>
+          <a id="walletTxLink" href="#" target="_blank" rel="noreferrer" hidden>View transaction</a>
         </div>
       </section>
 

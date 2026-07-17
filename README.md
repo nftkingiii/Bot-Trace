@@ -39,6 +39,7 @@ BotTrace gives users, teams, and auditors a shared record of agent behavior with
 - BOT Chain adapter that prepares `BotTraceRegistry.submitReceipt(...)` payloads.
 - Solidity smart contract for receipt registry storage and events.
 - Web dashboard for replaying agent decisions and inspecting receipt integrity.
+- Browser-wallet connection with BOT Chain mainnet switching, balance display, and receipt anchoring.
 - BOTScan-ready transaction and contract links.
 
 ## Project layout
@@ -63,6 +64,8 @@ npm run dev
 ```
 
 Then open `http://localhost:4173`.
+
+The dashboard remains publicly readable without a wallet. Connect MetaMask or another EIP-1193 wallet to switch to BOT Chain mainnet and anchor a fresh receipt through the deployed registry.
 
 ## BOT Chain integration
 
