@@ -32,6 +32,8 @@ Autonomous agents are starting to call APIs, spend tokens, sign transactions, an
 
 BotTrace gives users, teams, and auditors a shared record of agent behavior without exposing private prompts or raw documents on-chain.
 
+The Railway-ready backend independently reads receipt records from BOT Chain, while wallet connection and transaction signing remain in the user's browser.
+
 ## Prototype scope
 
 - Receipt canonicalization and SHA-256 hashing.
@@ -66,6 +68,8 @@ npm run dev
 Then open `http://localhost:4173`.
 
 The dashboard remains publicly readable without a wallet. Connect MetaMask or another EIP-1193 wallet to switch to BOT Chain mainnet and anchor a fresh receipt through the deployed registry.
+
+Railway and Vercel setup is documented in `docs/RAILWAY_DEPLOYMENT.md`.
 
 ## BOT Chain integration
 

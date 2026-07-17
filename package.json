@@ -5,13 +5,14 @@
   "type": "module",
   "description": "Verifiable execution trails for autonomous AI agents on BOT Chain.",
   "scripts": {
+    "start": "node apps/web/server.mjs",
     "dev": "node apps/web/server.mjs",
-    "build": "npm run check",
+    "build": "npm run check && node scripts/build-frontend-config.mjs",
     "demo": "node apps/agent/demo.mjs",
     "deploy:registry": "node scripts/deploy-registry.mjs",
     "submit:demo": "node scripts/submit-demo-receipt.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check apps/web/public/app.js && node --check apps/web/server.mjs && node --check apps/agent/demo.mjs && node --check packages/core/receipt.mjs && node --check packages/botchain/blackboxClient.mjs && node --check scripts/prepare-submit.mjs && node --check scripts/deploy-registry.mjs && node --check scripts/submit-demo-receipt.mjs"
+    "check": "node --check apps/web/public/app.js && node --check apps/web/server.mjs && node --check apps/agent/demo.mjs && node --check packages/core/receipt.mjs && node --check packages/botchain/blackboxClient.mjs && node --check scripts/prepare-submit.mjs && node --check scripts/deploy-registry.mjs && node --check scripts/submit-demo-receipt.mjs && node --check scripts/build-frontend-config.mjs"
   },
   "keywords": [
     "bot-chain",
@@ -21,8 +22,10 @@
     "receipts"
   ],
   "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.17.0"
+  },
   "devDependencies": {
-    "ethers": "^6.17.0",
     "solc": "^0.8.35"
   }
 }

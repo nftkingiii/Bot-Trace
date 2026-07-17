@@ -14,6 +14,7 @@ const MAINNET_PROOF = {
 const REGISTRY_ABI = [
   "function submitReceipt(string receiptId, bytes32 receiptHash, string agentId, bytes32 policyHash, uint256 costWei, string tool, string decision, string timestamp)"
 ];
+const API_URL = (window.BOTTRACE_CONFIG?.apiUrl ?? "").replace(/\/$/, "");
 
 let demoData = null;
 let browserProvider = null;
@@ -68,6 +69,23 @@ function canonicalJson(value) {
 function hashReceiptBody(receipt) {
   const { receiptHash, ...body } = receipt;
   return sha256(toUtf8Bytes(canonicalJson(body))).slice(2);
+}
+
+async function verifyReceiptWithBackend(receipt) {
+  text("backendStatus", "Checking");
+  try {
+    const response = await fetch(`${API_URL}/api/receipts/${encodeURIComponent(receipt.receiptId)}`);
+    if (!response.ok) throw new Error(`Backend returned ${response.status}`);
+    const record = await response.json();
+    const matches = record.receiptHash.toLowerCase() === `0x${receipt.receiptHash}`.toLowerCase();
+    text("backendStatus", matches ? "On-chain match" : "Hash mismatch");
+    document.getElementById("backendStatus").classList.toggle("is-risk", !matches);
+    return matches;
+  } catch (error) {
+    text("backendStatus", API_URL ? "Unavailable" : "Not configured");
+    document.getElementById("backendStatus").classList.add("is-risk");
+    return false;
+  }
 }
 
 function setWalletStatus(state, message) {
@@ -196,6 +214,7 @@ async function anchorReceipt() {
     setWalletStatus("pending", `Transaction ${shortHash(transaction.hash)} submitted. Waiting for confirmation.`);
     const confirmation = await transaction.wait(1);
     setWalletStatus("success", `Receipt ${shortHash(receipt.receiptId, 12, 8)} anchored in block ${confirmation.blockNumber}.`);
+    await verifyReceiptWithBackend(receipt);
     await refreshWallet(connectedAccount);
     document.getElementById("walletState").dataset.state = "success";
     document.getElementById("walletState").textContent = "Receipt anchored";
@@ -310,6 +329,7 @@ function render(data) {
 
   initScrollReveal();
   document.getElementById("anchorReceipt").disabled = !connectedAccount;
+  verifyReceiptWithBackend(receipt);
 }
 
 function initScrollReveal() {
